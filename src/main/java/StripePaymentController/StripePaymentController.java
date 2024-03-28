@@ -10,7 +10,7 @@ public class StripePaymentController {
 
     @RequestMapping("/")
     public String index() {
-        return "[Replace this text with something useful.]";
+        return "[Hello, World!]";
     }
 
 }
