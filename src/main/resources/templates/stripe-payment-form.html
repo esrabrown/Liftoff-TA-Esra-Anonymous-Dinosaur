@@ -11,48 +11,59 @@
     <title>Stripe Payment Form</title>
 </head>
 <body style="background-color: #f0f1f2;">
-    <p>Please enter the information for the payment method you wish to use.</p>
-    <form action="process-payment.php" method="post">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="phone">Phone number:</label><br>
-        <input type="tel" id="phone" name="phone" required><br>
-        <br>
-        <p>Please enter your billing address information:</p>
-        <label for="shipping.name">Cardholder Name:</label><br>
-        <input type="tel" placeholder="Name on card" id="shipping.name" name="shipping.name" required><br>
-
-        <label for="shipping.phone">Phone number:</label><br>
-        <input type="tel" placeholder="555.867.5309" id="shipping.phone" name="shipping.phone" required><br>
-
-        <label for="shipping.address.line1">Billing Address (Line 1):</label><br>
-        <input type="tel" placeholder="123 Fake St" id="shipping.address.line1" name="shipping.address.line1" required><br>
-
-        <label for="shipping.address.line2">Billing Address (Line 2):</label><br>
-        <input type="tel" placeholder="Apartment B" id="shipping.address.line2" name="shipping.address.line2" required><br>
-
-        <label for="shipping.address.postal_code">Postal Code:</label><br>
-        <input type="tel" placeholder="63101" id="shipping.address.postal_code" name="shipping.address.postal_code" required><br>
-
-        <label for="shipping.address.state">State:</label><br>
-        <input type="tel" placeholder="MO" id="shipping.address.state" name="shipping.address.state" required><br>
+    <table>
+        <tr>
+            <h1>Add Funds to Account</h1>
+            <p>Please enter amount to total amount to be added to account.</p>
+<!--            <script src="https://js.stripe.com/v3/"></script>-->
 
 
-        <label for="card-number">Credit card number:</label><br>
-        <input type="text" placeholder="4007702835532454" id="card-number" name="card-number" pattern="[0-9]{13,16}" inputmode="numeric" required><br>
+            <form action="https://api.stripe.com/v1/payment_intents" method="post">
+                <label for="amount">Total Amount:</label><br>
+                <input type="number" id="amount" name="amount" required><br>
 
-        <label for="expiration-date">Expiration date:</label><br>
-        <input type="month" id="expiration-date" name="expiration-date" required><br>
+<!--                <label for="name">Name:</label><br>-->
+<!--                <input type="text" id="name" name="name" required><br>-->
 
-        <label for="security-code">Security code:</label><br>
-        <input type="password" id="security-code" name="security-code" required><br>
+<!--                <label for="email">Email:</label><br>-->
+<!--                <input type="email" id="email" name="email" required><br>-->
 
-        <button class="btn btn-light  me-md-2" type="submit">Submit Payment</button>
-    </form>
+<!--                <label for="phone">Phone number:</label><br>-->
+<!--                <input type="tel" id="phone" name="phone" required><br>-->
+                <br>
+                <p>Please enter your billing address information:</p>
+                <label for="shipping.name">Cardholder Name:</label><br>
+                <input type="text" placeholder="Name on card" id="shipping.name" name="shipping.name" required><br>
+
+                <label for="shipping.phone">Phone number:</label><br>
+                <input type="tel" maxlength="12" placeholder="555.867.5309" id="shipping.phone" name="shipping.phone" required><br>
+
+                <label for="shipping.address.line1">Billing Address (Line 1):</label><br>
+                <input type="text" placeholder="123 Fake St" id="shipping.address.line1" name="shipping.address.line1" required><br>
+
+                <label for="shipping.address.line2">Billing Address (Line 2):</label><br>
+                <input type="text" placeholder="Apartment B" id="shipping.address.line2" name="shipping.address.line2"><br>
+
+                <label for="shipping.address.postal_code">Postal Code:</label><br>
+                <input type="text" maxlength="5" placeholder="63101" id="shipping.address.postal_code" name="shipping.address.postal_code" required><br>
+
+                <label for="shipping.address.state">State:</label><br>
+                <input type="text" maxlength="2" placeholder="MO" id="shipping.address.state" name="shipping.address.state" required><br>
+
+
+                <label for="card-number">Credit card number:</label><br>
+                <input type="number" placeholder="4007702835532454" id="card-number" name="card-number" pattern="[0-9]{13,16}" inputmode="numeric" required><br>
+
+                <label for="expiration-date">Expiration date:</label><br>
+                <input type="month" id="expiration-date" name="expiration-date" required><br>
+
+                <label for="security-code">3 Digit Security code:</label><br>
+                <input type="password" maxlength="3" id="security-code" name="security-code" required><br>
+
+                <button class="btn btn-light  me-md-2" type="submit">Add Funds</button>
+            </form>
+        </tr>
+    </table>
 </nav>
 </body>
 </html>
