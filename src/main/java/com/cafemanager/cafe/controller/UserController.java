@@ -1,6 +1,8 @@
 package com.cafemanager.cafe.controller;
 
 import com.cafemanager.cafe.model.SignupUserBean;
+import com.cafemanager.cafe.repository.StudentRepository;
+import com.cafemanager.cafe.repository.UserRepository;
 import com.cafemanager.cafe.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,10 @@ import com.cafemanager.cafe.entity.User;
 
 @Controller
 public class UserController {
+
+
+@Autowired
+private UserRepository userRepository;
 
 @Autowired
 UserService userService;

@@ -3,8 +3,7 @@ package com.cafemanager.cafe.model;
 import jakarta.validation.constraints.NotEmpty;
 
 public class SignupUserBean {
-
-    private int id;
+private int id;
 
 @NotEmpty(message = "User Firstname must not be empty")
 private String firstName;

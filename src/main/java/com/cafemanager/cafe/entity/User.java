@@ -1,13 +1,8 @@
 package com.cafemanager.cafe.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +12,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
     private Integer id;
 
-     private String firstName;
+    private String firstName;
 
     private String lastName;
 
@@ -25,6 +20,9 @@ public class User {
 
     private String password;
 
+    @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
+    @JoinColumn(name ="userstu_fk", referencedColumnName = "id")
+    private List<Student> studentList;
 
     //No Arg Constructor --to set the default values for thr instance variable created for an object
     //Keyword superclass,allows referencing the parent class/superclass of a subclass in java
@@ -40,9 +38,10 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+
     }
 
-        //getters and setters
+    //getters and setters
 
     public Integer getId() {
         return id;
@@ -117,7 +116,6 @@ public class User {
         return Objects.hash(id, firstName, lastName, email, password);
     }
 }
-
 
 
 

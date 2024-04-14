@@ -1,6 +1,5 @@
 package com.cafemanager.cafe.service;
 
-
 import com.cafemanager.cafe.entity.Student;
 import com.cafemanager.cafe.entity.User;
 import com.cafemanager.cafe.repository.StudentRepository;
@@ -11,24 +10,22 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
+public class StudentService {
 
     @Autowired
     UserRepository userRepository;
 
-    public User addUser(User user) {
-        User u = userRepository.save(user);
-        return userRepository.save(user);
+    @Autowired
+    StudentRepository studentRepository;
+
+    public List<Student> findAllStudent(int id) {
+    //    User userData = userRepository.findByEmail(userID);
+        return  studentRepository.findByUserId(id);
     }
 
-    public User findByUserEmail(String userEmail) {
-     User userInfo = userRepository.findByEmail(userEmail);
-     if (userInfo != null) {
-         return userInfo;
-     }
-     return null;
-
+    public Student addStudent(Student student) {
+        Student s = studentRepository.save(student);
+        return studentRepository.save(student);
     }
-
 
 }
