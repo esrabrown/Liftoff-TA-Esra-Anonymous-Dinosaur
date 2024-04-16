@@ -4,6 +4,7 @@ import com.cafemanager.cafe.entity.Student;
 import com.cafemanager.cafe.entity.User;
 import com.cafemanager.cafe.repository.StudentRepository;
 import com.cafemanager.cafe.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,14 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public List<Student> findAllStudent(int id) {
-    //    User userData = userRepository.findByEmail(userID);
-        return  studentRepository.findByUserId(id);
-    }
 
-    public Student addStudent(Student student) {
-        Student s = studentRepository.save(student);
-        return studentRepository.save(student);
-    }
+    //  public List<Student> findAllStudent(int id) {
 
+//        return  studentRepository.findByUser_Id(id);
+//    }
+
+   public void addStudent(Student student) {
+
+      studentRepository.save(student);
+   }
 }

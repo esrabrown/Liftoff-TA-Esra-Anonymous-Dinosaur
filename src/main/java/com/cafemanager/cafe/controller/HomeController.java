@@ -62,11 +62,11 @@ public class HomeController {
             return "login";
         }
 
-        //session.setAttribute("loginUser", user);
-       redirectAttributes.addFlashAttribute("user", user);
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        User user = (User) authentication.getPrincipal();
-//       session.setAttribute("loggedUser", user);
+
+ //      redirectAttributes.addFlashAttribute("user", user);
+//     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//      User user = (User) authentication.getPrincipal();
+       session.setAttribute("loggedUser", user);
 
         return "redirect:/displayAccountInfo";
     }

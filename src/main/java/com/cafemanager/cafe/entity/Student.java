@@ -1,57 +1,54 @@
 package com.cafemanager.cafe.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
-
 
 @Entity
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+
+    private Integer studentId;
 
     private String firstName;
 
     private String lastName;
 
-    private Boolean isSpecialDiet;
-
     private Double cafeteriaBalance;
 
     private String note;
 
-    private Integer userId;
+    @ManyToOne
+    @NotNull()
+    @JoinColumn(name = "user_Id")
+    private User user;
 
+   //No Arg Constructor
 
-    //No arg constructor
-    public  Student() {}
+    public Student() {
+    }
 
-    //Constructor with parameter
+    //constructor with argument
 
-    public Student(Integer id, String firstName, String lastName, Boolean isSpecialDiet, Double cafeteriaBalance, String note, Integer userId) {
-        this.id = id;
+    public Student(Integer studentId, String firstName, String lastName, Double cafeteriaBalance, String note, User user) {
+        this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.isSpecialDiet = isSpecialDiet;
         this.cafeteriaBalance = cafeteriaBalance;
         this.note = note;
-        this.userId = userId;
+        this.user = user;
     }
 
-
-    //Getter/setter
-
-    public Integer getId() {
-        return id;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
     public String getFirstName() {
@@ -70,14 +67,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Boolean getSpecialDiet() {
-        return isSpecialDiet;
-    }
-
-    public void setSpecialDiet(Boolean specialDiet) {
-        isSpecialDiet = specialDiet;
-    }
-
     public Double getCafeteriaBalance() {
         return cafeteriaBalance;
     }
@@ -90,32 +79,30 @@ public class Student {
         return note;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setNote(String note) {
         this.note = note;
+
     }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-
-    //to string method
 
 
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                "studentId=" + studentId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", isSpecialDiet=" + isSpecialDiet +
                 ", cafeteriaBalance=" + cafeteriaBalance +
                 ", note='" + note + '\'' +
-                ", userId=" + userId +
+    //            ", user=" + user +
+                ", userId=" + (user != null ? user.getUserId() : null) +
                 '}';
     }
 
@@ -123,12 +110,12 @@ public class Student {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student student)) return false;
-        return Objects.equals(getId(), student.getId()) && Objects.equals(getFirstName(), student.getFirstName()) && Objects.equals(getLastName(), student.getLastName()) && Objects.equals(isSpecialDiet, student.isSpecialDiet) && Objects.equals(getCafeteriaBalance(), student.getCafeteriaBalance()) && Objects.equals(getNote(), student.getNote()) && Objects.equals(getUserId(), student.getUserId());
+        return Objects.equals(getStudentId(), student.getStudentId()) && Objects.equals(getFirstName(), student.getFirstName()) && Objects.equals(getLastName(), student.getLastName()) && Objects.equals(getCafeteriaBalance(), student.getCafeteriaBalance()) && Objects.equals(getNote(), student.getNote()) && Objects.equals(getUser(), student.getUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), isSpecialDiet, getCafeteriaBalance(), getNote(), getUserId());
+        return Objects.hash(getStudentId(), getFirstName(), getLastName(), getCafeteriaBalance(), getNote(), getUser());
     }
 }
 

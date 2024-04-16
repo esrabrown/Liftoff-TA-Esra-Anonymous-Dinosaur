@@ -6,7 +6,8 @@ import jakarta.validation.constraints.NotNull;
 public class StudentBean {
 
 
-    private Integer id;
+    @NotNull(message = "student id must not be empty")
+    private int studentId;
 
     @NotEmpty(message = "User Firstname must not be empty")
     private String firstName;
@@ -14,21 +15,21 @@ public class StudentBean {
     @NotEmpty(message = "User Lastname must not be empty")
     private String lastName;
 
-    private boolean specialDiet;
-
     private Double cafeteriaBalance;
 
     private String note;
 
-    @NotNull
-    private Integer userId;
+    private int userId;
 
-    public Integer getId() {
-        return id;
+
+    //getter/setter
+
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getFirstName() {
@@ -47,14 +48,6 @@ public class StudentBean {
         this.lastName = lastName;
     }
 
-    public boolean getSpecialDiet() {
-        return specialDiet;
-    }
-
-    public void setSpecialDiet(boolean specialDiet) {
-        this.specialDiet = specialDiet;
-    }
-
     public Double getCafeteriaBalance() {
         return cafeteriaBalance;
     }
@@ -71,11 +64,14 @@ public class StudentBean {
         this.note = note;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 }
+
+
+

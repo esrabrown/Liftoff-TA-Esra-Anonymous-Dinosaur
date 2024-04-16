@@ -1,15 +1,18 @@
 package com.cafemanager.cafe.model;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 public class SignupUserBean {
-private int id;
+private int userId;
 
 @NotEmpty(message = "User Firstname must not be empty")
 private String firstName;
 
 @NotEmpty(message = "User Lastname must not be empty")
 private String lastName;
+
+
 
 @NotEmpty(message = "User Email must not be empty")
 private String userEmail;
@@ -24,12 +27,12 @@ private String confirmPassword;
 //getter/setter
 
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -72,5 +75,7 @@ private String confirmPassword;
         this.confirmPassword = confirmPassword;
     }
 }
+
+
 
 

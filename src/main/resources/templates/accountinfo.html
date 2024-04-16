@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -59,8 +59,6 @@
             <th>#</th>
             <th>Student Name</th>
             <th>Cafeteria Balance</th>
-            <th>Special Diet </th>
-            <th>Student Note</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -69,14 +67,10 @@
             <td th:text="${stuStat.index + 1}"></td>
             <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
             <td th:text="${stu.cafeteriaBalance}"></td>
-            <td th:text="${stu.specialDiet}"></td>
-            <td><span class="form-floating"><textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-               </span></td>
-<!--         </tr>-->
             <td><a th:href=" @{/updateStudent(id=${stu.id})}"
                    class="btn btn-warning">Payment</a> <a
                         th:href=" @{/updateStudent(id=${stu.id})}"
-                        class="btn btn-success">Edit</a> <a
+                        class="btn btn-success">Add Notes/FeedBack</a> <a
                     th:href=" @{/deleteStudent(id=${stu.id})}"
                     class="btn btn-danger">Delete</a>
             </td>
@@ -84,10 +78,52 @@
         </tbody>
     </table>
    </div>
-   <div>
-      <a th:href=" @{/addStudent}"
-        class="btn btn-primary">Add New Student</a>
-   </div>
+  </div>
+  <br>
+  <br>
+
+
+ <div class="container p-2">
+     <div class="row">
+         <div class="col-md-0"></div>
+         <div class="card col-md-4">
+             <div class="card-header">
+                 <h2 class="text-center">Add Student</h2>
+             </div>
+             <div>
+                 Welcome, <span th:text="${session.loginUser.userId}">Default Name</span>
+                 <!--<span th:text="${userFkId}">Default Id</span>-->
+               </div>
+
+                 <form th:action="@{/addStudent}" th:object="${student}" method="post">
+                 <div>
+                     <input type="text" th:field="*{firstName}" placeholder="First Name"/>
+                 </div>
+
+                 <div>
+                     <input type="text" th:field="*{lastName}" placeholder="Last Name"/>
+                 </div>
+
+                 <div>
+                     <input type="text" th:field="*{cafeteriaBalance}" placeholder="Amount"/>
+                 </div>
+
+                 <div>
+                     <input type="hidden" th:field="*{note}" th:value="note"/>
+                 </div>
+
+                  <div>
+                      <input type="hidden" name="user.userId" th:value="${session.loginUser.userId}" />
+<!--                       <input type="text" th:field="*{userId}" placeholder="Enter UserID"/>-->
+                 </div>
+
+                 <div>
+                     <button type="submit">Submit</button>
+                 </div>
+             </form>
+         </div>
+     </div>
  </div>
+
 </body>
 </html>
