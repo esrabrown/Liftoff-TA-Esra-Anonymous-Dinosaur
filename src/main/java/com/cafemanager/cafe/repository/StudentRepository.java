@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StudentRepository extends CrudRepository <Student, Integer> {
+public interface StudentRepository extends CrudRepository<Student, Integer> {
+ // List<Student> findByUser_UserId(Integer userId);
 
-//  List<Student> findByUser_Id(Integer userId);
-
+  List<Student> findByUser_UserId(int userId);
 }

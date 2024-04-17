@@ -67,11 +67,11 @@
             <td th:text="${stuStat.index + 1}"></td>
             <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
             <td th:text="${stu.cafeteriaBalance}"></td>
-            <td><a th:href=" @{/updateStudent(id=${stu.id})}"
+            <td><a th:href=" @{/updateStudent(id=${stu.studentId})}"
                    class="btn btn-warning">Payment</a> <a
-                        th:href=" @{/updateStudent(id=${stu.id})}"
+                        th:href=" @{/updateStudent(id=${stu.studentId})}"
                         class="btn btn-success">Add Notes/FeedBack</a> <a
-                    th:href=" @{/deleteStudent(id=${stu.id})}"
+                    th:href=" @{/deleteStudent(id=${stu.studentId})}"
                     class="btn btn-danger">Delete</a>
             </td>
          </tr>
@@ -81,49 +81,51 @@
   </div>
   <br>
   <br>
-
-
- <div class="container p-2">
-     <div class="row">
-         <div class="col-md-0"></div>
-         <div class="card col-md-4">
-             <div class="card-header">
-                 <h2 class="text-center">Add Student</h2>
-             </div>
-             <div>
-                 Welcome, <span th:text="${session.loginUser.userId}">Default Name</span>
-                 <!--<span th:text="${userFkId}">Default Id</span>-->
-               </div>
-
-                 <form th:action="@{/addStudent}" th:object="${student}" method="post">
-                 <div>
-                     <input type="text" th:field="*{firstName}" placeholder="First Name"/>
-                 </div>
-
-                 <div>
-                     <input type="text" th:field="*{lastName}" placeholder="Last Name"/>
-                 </div>
-
-                 <div>
-                     <input type="text" th:field="*{cafeteriaBalance}" placeholder="Amount"/>
-                 </div>
-
-                 <div>
-                     <input type="hidden" th:field="*{note}" th:value="note"/>
-                 </div>
-
-                  <div>
-                      <input type="hidden" name="user.userId" th:value="${session.loginUser.userId}" />
-<!--                       <input type="text" th:field="*{userId}" placeholder="Enter UserID"/>-->
-                 </div>
-
-                 <div>
-                     <button type="submit">Submit</button>
-                 </div>
-             </form>
-         </div>
-     </div>
+ <div>
+     <a th:href=" @{/addStudent}"
+        class="btn btn-primary">Add New Student</a>
  </div>
+
+<!-- <div class="container p-2">-->
+<!--     <div class="row">-->
+<!--         <div class="col-md-0"></div>-->
+<!--         <div class="card col-md-4">-->
+<!--             <div class="card-header">-->
+<!--                 <h2 class="text-center">Add Student</h2>-->
+<!--             </div>-->
+<!--             <div>-->
+<!--                 Welcome, <span th:text="${session.loginUser.userId}">Default Name</span>-->
+<!--            </div>-->
+
+<!--                 <form th:action="@{/addStudent}" th:object="${student}" method="post">-->
+<!--                 <div>-->
+<!--                     <input type="text" th:field="*{firstName}" placeholder="First Name"/>-->
+<!--                 </div>-->
+
+<!--                 <div>-->
+<!--                     <input type="text" th:field="*{lastName}" placeholder="Last Name"/>-->
+<!--                 </div>-->
+
+<!--                 <div>-->
+<!--                     <input type="text" th:field="*{cafeteriaBalance}" placeholder="Amount"/>-->
+<!--                 </div>-->
+
+<!--                 <div>-->
+<!--                     <input type="hidden" th:field="*{note}" th:value="note"/>-->
+<!--                 </div>-->
+
+<!--                  <div>-->
+<!--                      <input type="hidden" name="user.userId" th:value="${session.loginUser.userId}" />-->
+
+<!--                 </div>-->
+
+<!--                 <div>-->
+<!--                     <button type="submit">Submit</button>-->
+<!--                 </div>-->
+<!--             </form>-->
+<!--         </div>-->
+<!--     </div>-->
+<!-- </div>-->
 
 </body>
 </html>

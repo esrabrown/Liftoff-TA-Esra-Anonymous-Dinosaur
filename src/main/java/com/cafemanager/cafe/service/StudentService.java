@@ -20,10 +20,9 @@ public class StudentService {
     StudentRepository studentRepository;
 
 
-    //  public List<Student> findAllStudent(int id) {
-
-//        return  studentRepository.findByUser_Id(id);
-//    }
+    public List<Student> findAllStudent(int userId) {
+        return studentRepository.findByUser_UserId(userId);
+    }
 
    public void addStudent(Student student) {
 
