@@ -15,8 +15,8 @@ public class CreateCustomer {
 //  ----------------------------------   create a customer WITH params.
         CustomerCreateParams params =
                 CustomerCreateParams.builder()
-                        .setEmail("michael.jackson@heehee.com")
-                        .setName("Michael Jackson")
+                        .setEmail("Jermaine.jackson@heehee.com")
+                        .setName("Jermaine Jackson")
                         .build();
         try {
             Customer customer =
@@ -26,10 +26,5 @@ public class CreateCustomer {
         } catch(Exception e) {
             System.out.println(e);
         }
-
-
-
-
-
     }
 }
