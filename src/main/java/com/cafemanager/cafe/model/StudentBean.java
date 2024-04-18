@@ -2,6 +2,7 @@ package com.cafemanager.cafe.model;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class StudentBean {
 
@@ -17,6 +18,9 @@ public class StudentBean {
 
     private Double cafeteriaBalance;
 
+
+
+    @Size(max = 255, message = "Description too long!")
     private String note;
 
     private int userId;

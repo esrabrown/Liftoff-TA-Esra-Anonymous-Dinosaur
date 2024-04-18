@@ -2,13 +2,10 @@ package com.cafemanager.cafe.controller;
 
 import com.cafemanager.cafe.entity.User;
 import com.cafemanager.cafe.model.LoginUserBean;
-import com.cafemanager.cafe.model.SignupUserBean;
 import com.cafemanager.cafe.service.UserService;
 import jakarta.servlet.http.HttpSession;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -62,10 +59,6 @@ public class HomeController {
             return "login";
         }
 
-
- //      redirectAttributes.addFlashAttribute("user", user);
-//     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//      User user = (User) authentication.getPrincipal();
        session.setAttribute("loggedUser", user);
 
         return "redirect:/displayAccountInfo";

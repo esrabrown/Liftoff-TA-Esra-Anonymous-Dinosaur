@@ -1,14 +1,11 @@
 package com.cafemanager.cafe.service;
 
 
-import com.cafemanager.cafe.entity.Student;
 import com.cafemanager.cafe.entity.User;
-import com.cafemanager.cafe.repository.StudentRepository;
 import com.cafemanager.cafe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class UserService {

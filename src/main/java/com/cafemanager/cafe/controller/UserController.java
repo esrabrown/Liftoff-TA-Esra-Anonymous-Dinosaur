@@ -1,7 +1,6 @@
 package com.cafemanager.cafe.controller;
 
 import com.cafemanager.cafe.model.SignupUserBean;
-import com.cafemanager.cafe.repository.StudentRepository;
 import com.cafemanager.cafe.repository.UserRepository;
 import com.cafemanager.cafe.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -31,6 +30,7 @@ UserService userService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public ModelAndView signupForm() {
+
         return new ModelAndView("signup", "user", new SignupUserBean());
     }
 

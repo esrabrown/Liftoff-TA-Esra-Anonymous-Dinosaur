@@ -8,25 +8,18 @@
 
     <title>School Cafe Manager</title>
 </head>
-
-
-<body class="vh-100" style="background-image: url('https://img.freepik.com/free-photo/tea-striped-cloth-copy-space_23-2148337586.jpg?w=996&t=st=1712803793~exp=1712804393~hmac=772bfff2f9b85c08123471bdaaaaa2f780a6ef789803221915f3ac7f3b88157a'); background-size: cover;">
-
-
+<body style="background-color: #f0f1f2;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!--    <div class="container-fluid">-->
     <a class="navbar-brand">School Cafe Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" th:href="@{/displayAccountInfo}">Home</a>
             </li>
         </ul>
-
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/logout}" type="submit">Logout</a>
         </form>
@@ -34,7 +27,6 @@
 </nav>
 <br>
 <br>
-
  <div class="container p-2">
      <div class="row">
          <div class="col-md-0"></div>
@@ -42,40 +34,37 @@
              <div class="card-header">
                  <h2 class="text-center">Add Student</h2>
              </div>
-             <div>
-                 Welcome, <span th:text="${session.loginUser.userId}">Default Name</span>
-            </div>
-
+              <br>
                  <form th:action="@{/addStudent}" th:object="${student}" method="post">
+                     <br>
                  <div>
                      <input type="text" th:field="*{firstName}" placeholder="First Name"/>
                  </div>
-
+                     <br>
                  <div>
                      <input type="text" th:field="*{lastName}" placeholder="Last Name"/>
                  </div>
-
+                     <br>
                  <div>
                      <input type="text" th:field="*{cafeteriaBalance}" placeholder="Amount"/>
                  </div>
-
+                     <br>
                  <div>
                      <input type="hidden" th:field="*{note}" th:value="note"/>
                  </div>
-
+                     <br>
                   <div>
                       <input type="hidden" name="user.userId" th:value="${session.loginUser.userId}" />
-
                  </div>
-
                  <div>
-                     <button type="submit">Submit</button>
+                     <button type="submit" class="btn btn-primary">Submit</button>
+                     <a th:href="@{/displayAccountInfo}" class="btn btn-primary">Back</a>
                  </div>
+                     <br>
              </form>
+             <br>
          </div>
      </div>
  </div>
-
-
 </body>
 </html>
