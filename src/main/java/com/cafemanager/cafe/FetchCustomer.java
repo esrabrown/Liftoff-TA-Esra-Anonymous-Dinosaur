@@ -11,7 +11,7 @@ public class FetchCustomer {
         // Fetch a customer
          try {
            Customer customer = Customer.retrieve(
-               "cus_PwUmZ6FNAtRHv7"
+               "cus_PwUfvv6smESb4j"
            );
            System.out.println(customer);
          } catch(Exception e) {
