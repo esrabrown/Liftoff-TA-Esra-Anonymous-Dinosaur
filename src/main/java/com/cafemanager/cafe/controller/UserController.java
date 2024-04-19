@@ -1,9 +1,11 @@
 package com.cafemanager.cafe.controller;
 
 import com.cafemanager.cafe.model.SignupUserBean;
+import com.cafemanager.cafe.repository.UserRepository;
 import com.cafemanager.cafe.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,14 +16,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.cafemanager.cafe.entity.User;
 
+
+@SpringBootApplication
 @Controller
 public class UserController {
+
+
+@Autowired
+private UserRepository userRepository;
 
 @Autowired
 UserService userService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public ModelAndView signupForm() {
+
         return new ModelAndView("signup", "user", new SignupUserBean());
     }
 
