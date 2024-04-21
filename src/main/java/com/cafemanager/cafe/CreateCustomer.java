@@ -16,7 +16,7 @@ public class CreateCustomer {
         CustomerCreateParams params =
                 CustomerCreateParams.builder()
                         .setEmail("Jermaine.jackson@heehee.com")
-                        .setName("Jermaine Jackson")
+                        .setName("Tito Jackson")
                         .build();
         try {
             Customer customer =
