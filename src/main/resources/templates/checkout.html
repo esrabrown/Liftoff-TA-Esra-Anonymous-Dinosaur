@@ -16,10 +16,10 @@
 
     <form action='/payment/charge' method='POST' id='checkout-form'>
         <input type='hidden' th:value='${amount}' name='amount' />
-        <label>Total Amount: <span th:text='${amount/100}' /></label>
+        <label>Total Amount: $<span th:text='${amount/100}' /></label>
         <input type="hidden" th:value="${studentId}" name="studentId"/>
 
-        <br>
+        <br><br><br>
         <p>Please enter your billing address information:</p>
 
         <label for="shipping.phone">Phone number:</label><br>

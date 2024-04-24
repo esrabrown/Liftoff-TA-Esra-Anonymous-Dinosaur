@@ -42,7 +42,7 @@
 
             <form th:action="@{/payment/add-funds}" method="post">
                 <input type="hidden" name="userId" id="userId" th:value="${student.studentId}">
-                <label for="amount">Total Amount:</label><br>
+                <label for="amount">Total Amount: $</label><br>
                 <input type="number" name="amount" id="amount"/>
 
                 <input type="submit" value="Add Funds"/>
