@@ -73,7 +73,7 @@ public class ChargeRequest {
     }
 
     public int getAmount() {
-        return amount;
+        return (amount / 100);
     }
 
     public void setAmount(int amount) {
