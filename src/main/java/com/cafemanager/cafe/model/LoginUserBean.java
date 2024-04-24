@@ -11,7 +11,6 @@ private String userPassword;
 
 //getters/Setters
 
-
     public String getUserEmail() {
         return userEmail;
     }
@@ -27,4 +26,5 @@ private String userPassword;
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
 }

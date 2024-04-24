@@ -40,6 +40,15 @@ UserService userService;
         if (bindingResult.hasErrors()) {
             return "signup";
         }
+       User existingUser = userRepository.findByEmail(signupUserBean.getUserEmail());
+
+       if (existingUser != null) {
+           String userError = "A user with this userEmail already exists.";
+           System.out.print(userError);
+           model.addAttribute("userError", userError);
+           return "signup";
+       }
+
        if (!signupUserBean.getUserPassword().equals((signupUserBean.getConfirmPassword()))) {
            String cpwdError = "The password comfirmation does not match.";
            System.out.print(cpwdError);

@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class AccountInfoController {
@@ -47,15 +48,25 @@ public class AccountInfoController {
 
     //Adding Student in controller
     @PostMapping("/addStudent")
-    public String processAddStudent(@ModelAttribute("student") @Validated Student student, BindingResult bindingResult, ModelMap model) {
+    public String processAddStudent(@ModelAttribute("student") @Validated StudentBean studentBean, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
             return "addstudent";
         }
-        Integer userId = student.getUser().getUserId();
+        //
+        //error handling
+        //
+
+        Student stu = new Student();
+        stu.setStudentId(studentBean.getStudentId());
+        stu.setFirstName(studentBean.getFirstName());
+        stu.setLastName(studentBean.getLastName());
+        stu.setCafeteriaBalance(studentBean.getCafeteriaBalance());
+        stu.setNote(studentBean.getNote());
+        Integer userId = studentBean.getUserId();
         User user = userRepository.findById(userId).orElse(null);
         if (user != null) {
-            student.setUser(user);
-            studentService.addStudent(student);
+            stu.setUser(user);
+            studentService.addStudent(stu);
             return "redirect:/displayAccountInfo";
         } else {
             model.addAttribute("error", "User not found.");
