@@ -93,7 +93,7 @@ public class AccountInfoController {
 
     }
 
-   @RequestMapping(value = "/addNote", method = RequestMethod.POST)
+    @RequestMapping(value = "/addNote", method = RequestMethod.POST)
     public String processAddNote(@ModelAttribute("studentBean") @Validated StudentBean studentBean, BindingResult bindingResult, ModelMap model) {
 
         if (bindingResult.hasErrors()) {
@@ -120,8 +120,8 @@ public class AccountInfoController {
             return "addnote";
         }
 
-       return "redirect:/displayAccountInfo";
-   }
+        return "redirect:/displayAccountInfo";
+    }
 
 }
 

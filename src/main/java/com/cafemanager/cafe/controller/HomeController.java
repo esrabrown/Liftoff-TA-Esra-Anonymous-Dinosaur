@@ -31,7 +31,7 @@ public class HomeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView loginForm() {
-     return new ModelAndView("login", "loginUserBean", new LoginUserBean());
+        return new ModelAndView("login", "loginUserBean", new LoginUserBean());
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -41,16 +41,16 @@ public class HomeController {
 
 
         if(bindingResult.hasErrors()){
-           System.out.println(bindingResult.getErrorCount());
-           model.addAttribute("msg", "Login Error");
-           return "login";
+            System.out.println(bindingResult.getErrorCount());
+            model.addAttribute("msg", "Login Error");
+            return "login";
         }
 
         User user = userService.findByUserEmail(loginUserBean.getUserEmail());
         if (user == null) {
-         model.addAttribute("msg", "There is no user with this name.");
-         model.addAttribute("user", loginUserBean);
-         return "login";
+            model.addAttribute("msg", "There is no user with this name.");
+            model.addAttribute("user", loginUserBean);
+            return "login";
         }
 
         if(!user.getPassword().equals(loginUserBean.getUserPassword())) {
@@ -59,17 +59,17 @@ public class HomeController {
             return "login";
         }
 
-       session.setAttribute("loggedUser", user);
+        session.setAttribute("loggedUser", user);
 
         return "redirect:/displayAccountInfo";
     }
 
- @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         session.setAttribute("loginUser", null);
         return "redirect:/";
 
- }
+    }
 
 }
 

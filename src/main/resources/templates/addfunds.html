@@ -31,31 +31,25 @@
 </nav>
 
 <!--this adds the "Add Funds" button to the page-->
-<table>
-    <tr>
-        <br>
+<div class="px-2 py-3">
+    <table>
+        <tr>
+            <br>
 
-        <h3>Add Funds to Account</h3>
+            <h3>Add Funds to <span th:text="${student.firstName}"></span>'s Account</h3>
 
-        <br>
-        <script async
-                src="https://js.stripe.com/v3/buy-button.js">
-        </script>
+            <br>
 
-        <stripe-buy-button
-                buy-button-id="buy_btn_1P5XXXLnssI0iBqMGkF4eLAL"
-                publishable-key="pk_test_51Oz9N1LnssI0iBqM8wMxUZqHGjVCN3f9REcMkYnGcC7HLAYUw8leSCHURyRoZtW0R9avL1LBLAlCNdnOpWmyADib00odKGNTxP"
-        >
-        </stripe-buy-button>
-    </tr>
-</table>
+            <form th:action="@{/payment/add-funds}" method="post">
+                <input type="hidden" name="userId" id="userId" th:value="${student.studentId}">
+                <label for="amount">Total Amount:</label><br>
+                <input type="number" name="amount" id="amount"/>
 
-<!--BEGINNING OF DARKMODE TOGGLE CODE-->
-<input type="checkbox" id="toggle-darkmode"/>
-<label for="toggle-darkmode">
-    <div class="background"></div>
-
-    <!--END OF DARKMODE TOGGLE CODE-->
+                <input type="submit" value="Add Funds"/>
+            </form>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>

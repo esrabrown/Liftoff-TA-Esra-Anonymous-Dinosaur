@@ -16,24 +16,23 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/payment")
 public class PaymentController {
-
     @Value("${stripe.public.key}")
     private String stripePublicKey;
 
-    private final StripeService paymentService;
+    private final StripeService paymentsService;
     private final StudentService studentService;
 
-    public PaymentController(StripeService paymentService, StudentService studentService) {
-        this.paymentService = paymentService;
+    public PaymentController(StripeService paymentsService, StudentService studentService) {
+        this.paymentsService = paymentsService;
         this.studentService = studentService;
     }
 
     @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model)
             throws StripeException {
-        chargeRequest.setDescription("Funds added on date: " + java.time.LocalDate.now()+" by user: "+chargeRequest.getStudentId());
+        chargeRequest.setDescription("Funds added at date: " + java.time.LocalDate.now()+" by user: "+chargeRequest.getStudentId());
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
-        Charge charge = paymentService.charge(chargeRequest);
+        Charge charge = paymentsService.charge(chargeRequest);
         model.addAttribute("id", charge.getId());
         model.addAttribute("status", charge.getStatus());
         model.addAttribute("chargeId", charge.getId());
@@ -42,7 +41,6 @@ public class PaymentController {
         studentService.addFunds(chargeRequest,charge);
         return "result";
     }
-
     @GetMapping("/addfunds")
     public String loadAddFundsPage(Model model, @RequestParam("studentId") Integer studentId){
         Student student = studentService.findById(studentId);

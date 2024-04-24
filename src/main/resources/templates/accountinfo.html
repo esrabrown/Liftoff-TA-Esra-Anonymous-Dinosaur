@@ -68,7 +68,7 @@
                 <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
                 <td th:text="${stu.cafeteriaBalance}"></td>
                 <td>
-                    <a th:href=" @{/addfunds(studentId=${stu.studentId})}"
+                    <a th:href=" @{/payment/addfunds(studentId=${stu.studentId})}"
                        class="btn btn-warning">Payment
                     </a>
                     <a th:href=" @{/addNote(studentId=${stu.studentId})}"
