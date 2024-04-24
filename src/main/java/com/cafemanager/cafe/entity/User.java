@@ -46,7 +46,6 @@ public class User {
         this.students = students;
     }
 
-
     //getters and setters
 
     public Integer getUserId() {
@@ -97,9 +96,7 @@ public class User {
         this.students = students;
     }
 
-
     //toStringMethod and hashcode method
-
 
     @Override
     public boolean equals(Object o) {
