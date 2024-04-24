@@ -30,7 +30,7 @@ public class PaymentController {
     @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model)
             throws StripeException {
-        chargeRequest.setDescription("Funds added at date: " + java.time.LocalDate.now()+" by user: "+chargeRequest.getStudentId());
+        chargeRequest.setDescription("Funds added on date: " + java.time.LocalDate.now()+" by user: "+chargeRequest.getStudentId());
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
         Charge charge = paymentsService.charge(chargeRequest);
         model.addAttribute("id", charge.getId());

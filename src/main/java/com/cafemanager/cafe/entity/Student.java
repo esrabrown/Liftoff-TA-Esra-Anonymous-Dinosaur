@@ -2,8 +2,8 @@ package com.cafemanager.cafe.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.Objects;
+
 
 @Entity
 public class Student {
@@ -68,6 +68,8 @@ public class Student {
     }
 
     public Double getCafeteriaBalance() {
+        if (cafeteriaBalance == null) { return new Double(0.0); }
+
         return cafeteriaBalance;
     }
 
