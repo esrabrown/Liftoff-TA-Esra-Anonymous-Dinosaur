@@ -1,23 +1,19 @@
 package com.cafemanager.cafe.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer userId;
 
-     private String firstName;
+    private String firstName;
 
     private String lastName;
 
@@ -26,30 +22,38 @@ public class User {
     private String password;
 
 
+    //calling Student List for only one direction mapping
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//   @JoinColumn(name = "studentL", referencedColumnName = "userId")
+    private List<Student> students = new ArrayList<>();
+
+
     //No Arg Constructor --to set the default values for thr instance variable created for an object
     //Keyword superclass,allows referencing the parent class/superclass of a subclass in java
     public User() {
         super();
     }
 
-
     //Constructor with parameter
-    public User(Integer id, String firstName, String lastName, String email, String password) {
-        this.id = id;
+
+    public User(Integer userId, String firstName, String lastName, String email, String password, List<Student> students) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.students = students;
     }
 
-        //getters and setters
+    //getters and setters
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -84,39 +88,42 @@ public class User {
         this.password = password;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 
     //toStringMethod and hashcode method
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName +
-                ", lastName='" + lastName +
-                ", email='" + email +
-                ", password='" + password +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null)
-            return false;
-        if (getClass() != o.getClass())
-            return false;
-        User other = (User) o;
-        return Objects.equals(id, other.id) && Objects.equals(firstName, other.firstName) &&
-                Objects.equals(lastName, other.lastName) && Objects.equals(email, other.email)
-                && Objects.equals(password, other.password);
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(getUserId(), user.getUserId()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getStudents(), user.getStudents());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password);
+        return Objects.hash(getUserId(), getFirstName(), getLastName(), getEmail(), getPassword(), getStudents());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", students=" + students +
+                '}';
+
     }
 }
+
 
 
 

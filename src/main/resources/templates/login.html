@@ -24,6 +24,8 @@
                 <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
             </li>
         </ul>
+
+
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/login}" type="submit">Login</a>
             <a class="btn btn-light me-md-2" th:href="@{/signup}" type="submit">SignUp</a>
@@ -43,12 +45,22 @@
                 <div class="form-group">
                     <label class="form-label">Email</label>
                     <input type="text" class="form-control" th:field="*{userEmail}"/>
+                    <label th:if="${#fields.hasErrors('userEmail')}"  th:errors="*{userEmail}"
+                           style="color: red;">Error</label>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" th:field="*{userPassword}" />
+                    <input type="password" class="form-control" th:field="*{userPassword}"/>
+                    <label th:if="${#fields.hasErrors('userPassword')}"  th:errors="*{userPassword}"
+                           style="color: red;">Error</label>
                 </div>
+
+               <!--Error Message showed on login form-->
+                <div class="form-group">
+                    <p style="..." th:text="${msg}"></p>
+                </div>
+
                 <br>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -56,7 +68,6 @@
                 <br>
             </form>
         </div>
-<!--        <div class="col-md-3"></div>-->
     </div>
 </div>
 </body>
