@@ -1,8 +1,10 @@
 package com.cafemanager.cafe.service;
 
 import com.cafemanager.cafe.entity.Student;
+import com.cafemanager.cafe.model.ChargeRequest;
 import com.cafemanager.cafe.repository.StudentRepository;
 import com.cafemanager.cafe.repository.UserRepository;
+import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,11 @@ public class StudentService {
         student = stu;
        studentRepository.save(student);
    }
-
-
+    public void addFunds(ChargeRequest chargeRequest, Charge charge) {
+        Student student = studentRepository.findById(chargeRequest.getStudentId()).get();
+        if (charge.getStatus().equals("succeeded")) {
+            student.setCafeteriaBalance(student.getCafeteriaBalance() + chargeRequest.getAmount());
+            studentRepository.save(student);
+        }
+    }
 }

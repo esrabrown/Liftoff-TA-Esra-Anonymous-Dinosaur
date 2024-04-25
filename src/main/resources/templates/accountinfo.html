@@ -9,29 +9,29 @@
     <title>School Cafe Manager</title>
 
     <style>
-       .nav-bar {
-       width: 100%;
-       height: 70px;
-       background-color: #337AB7;
-       }
-
-        .text {
-        color: white;
-        font-size: 25px;
-        font-weight: bold;
+        .nav-bar {
+        width: 100%;
+        height: 70px;
+        background-color: #337AB7;
         }
 
-        .table {
-          margin-left: 20px;
-          margin-top: 30px;
-        }
+         .text {
+         color: white;
+         font-size: 25px;
+         font-weight: bold;
+         }
+
+         .table {
+           margin-left: 20px;
+           margin-top: 30px;
+         }
 
     </style>
 </head>
 <body class="vh-100" style="background-image: url('https://img.freepik.com/free-photo/tea-striped-cloth-copy-space_23-2148337586.jpg?w=996&t=st=1712803793~exp=1712804393~hmac=772bfff2f9b85c08123471bdaaaaa2f780a6ef789803221915f3ac7f3b88157a'); background-size: cover;">
 
 
- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <!--    <div class="container-fluid">-->
     <a class="navbar-brand">School Cafe Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,44 +51,44 @@
     </div>
 </nav>
 
- <div>
-   <div class="row">
-    <table class="table">
-        <thead class="table-dark">
-        <tr>
-            <th>#</th>
-            <th>Student Name</th>
-            <th>Cafeteria Balance</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-         <tr th:each="stu, stuStat : ${studentList}">
-            <td th:text="${stuStat.index + 1}"></td>
-            <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
-            <td th:text="${stu.cafeteriaBalance}"></td>
-            <td>
-                <a th:href=" @{/payBalance(studentId=${stu.studentId})}"
-                   class="btn btn-warning">Payment
-                </a>
-                <a th:href=" @{/addNote(studentId=${stu.studentId})}"
-                   class="btn btn-success">Add Notes/FeedBack
-                </a>
-                <a th:href=" @{/deleteStudent(studentId=${stu.studentId})}"
-                    class="btn btn-danger">Delete
-                </a>
-            </td>
-         </tr>
-        </tbody>
-    </table>
-   </div>
-  </div>
-  <br>
-  <br>
- <div>
-     <a th:href=" @{/addStudent}"
-        class="btn btn-primary">Add New Student</a>
- </div>
+<div>
+    <div class="row">
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Student Name</th>
+                <th>Cafeteria Balance</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="stu, stuStat : ${studentList}">
+                <td th:text="${stuStat.index + 1}"></td>
+                <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
+                <td th:text="${stu.cafeteriaBalance}"></td>
+                <td>
+                    <a th:href=" @{/payment/addfunds(studentId=${stu.studentId})}"
+                       class="btn btn-warning">Payment
+                    </a>
+                    <a th:href=" @{/addNote(studentId=${stu.studentId})}"
+                       class="btn btn-success">Add Notes/FeedBack
+                    </a>
+                    <a th:href=" @{/deleteStudent(studentId=${stu.studentId})}"
+                       class="btn btn-danger">Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<div>
+    <a th:href=" @{/addStudent}"
+       class="btn btn-primary">Add New Student</a>
+</div>
 
 </body>
 </html>
