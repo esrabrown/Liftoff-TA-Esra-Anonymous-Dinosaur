@@ -45,20 +45,19 @@
                 <div class="form-group">
                     <label class="form-label">Email</label>
                     <input type="text" class="form-control" th:field="*{userEmail}"/>
+
                     <label th:if="${#fields.hasErrors('userEmail')}"  th:errors="*{userEmail}"
                            style="color: red;">Error</label>
+
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Password</label>
                     <input type="password" class="form-control" th:field="*{userPassword}"/>
+
                     <label th:if="${#fields.hasErrors('userPassword')}"  th:errors="*{userPassword}"
                            style="color: red;">Error</label>
-                </div>
 
-               <!--Error Message showed on login form-->
-                <div class="form-group">
-                    <p style="..." th:text="${msg}"></p>
                 </div>
 
                 <br>

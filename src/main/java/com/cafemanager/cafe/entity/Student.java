@@ -10,7 +10,10 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+
     private Integer studentId;
+
     private String firstName;
 
     private String lastName;
