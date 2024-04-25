@@ -39,14 +39,19 @@
                      <br>
                  <div>
                      <input type="text" th:field="*{firstName}" placeholder="First Name"/>
+                     <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
+                            style="color: red;">Error</label>
+
                  </div>
                      <br>
                  <div>
                      <input type="text" th:field="*{lastName}" placeholder="Last Name"/>
+                     <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
+                            style="color: red;">Error</label>
                  </div>
                      <br>
                  <div>
-                     <input type="text" th:field="*{cafeteriaBalance}" placeholder="Amount"/>
+                     <input type="hidden" th:field="*{cafeteriaBalance}" th:value="cafeteriaBalance"/>
                  </div>
                      <br>
                  <div>
@@ -54,9 +59,9 @@
                  </div>
                      <br>
                   <div>
-                      <input type="hidden" name="user.userId" th:value="${session.loginUser.userId}" />
+                      <input type="hidden" name="userId" th:value="${session.loginUser.userId}" />
                  </div>
-                 <div>
+                <div>
                      <button type="submit" class="btn btn-primary">Submit</button>
                      <a th:href="@{/displayAccountInfo}" class="btn btn-primary">Back</a>
                  </div>
