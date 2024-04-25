@@ -41,10 +41,12 @@ public class StudentService {
         student = stu;
        studentRepository.save(student);
    }
+
+   // updates student balance by adding stripe transaction results
     public void addFunds(ChargeRequest chargeRequest, Charge charge) {
         Student student = studentRepository.findById(chargeRequest.getStudentId()).get();
         if (charge.getStatus().equals("succeeded")) {
-            student.setCafeteriaBalance(student.getCafeteriaBalance() + chargeRequest.getAmount());
+            student.setCafeteriaBalance(student.getCafeteriaBalance() + (chargeRequest.getAmount() / 100));
             studentRepository.save(student);
         }
     }

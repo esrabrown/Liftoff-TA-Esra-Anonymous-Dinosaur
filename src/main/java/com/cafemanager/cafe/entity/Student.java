@@ -64,6 +64,8 @@ public class Student {
         this.lastName = lastName;
     }
 
+
+    // checks cafeteria balance and if it is 'null' changes it to 0.
     public Double getCafeteriaBalance() {
         if (cafeteriaBalance == null) { return new Double(0.0); }
 

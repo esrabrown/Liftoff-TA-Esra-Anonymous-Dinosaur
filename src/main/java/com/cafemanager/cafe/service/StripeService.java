@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Service
 public class StripeService {
+    // secret key is stored in application.properties. Currently using TEST KEYS.
     @Value("${stripe.secret.key}")
     private String secretKey;
 
@@ -21,6 +22,7 @@ public class StripeService {
         Stripe.apiKey = secretKey;
     }
 
+    // sends charge request to stripe
     public Charge charge(ChargeRequest chargeRequest) throws StripeException {
         Map<String, Object> chargeParams = new HashMap<>();
         chargeParams.put("amount", chargeRequest.getAmount());
