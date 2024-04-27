@@ -75,68 +75,22 @@ body{
       padding: 20px 0;
     }
 
-    .theme-switch {
-      display: inline-block;
-      height: 34px;
-      position: relative;
-      width: 60px;
+/* Declare two CSS custom properties */
+:root {
+  --color-bg: #ffffff;
+  --color-fg: #000000;
+}
 
-      input {
-        display: none;
-      }
+/* Use the prefers-color-scheme media query to hook into system settings */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #222222;
+    --color-fg: #ffffff;
+  }
+}
 
-      &-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        margin-top: 20px;
-
-        em {
-          margin-left: 10px;
-          font-size: 1rem;
-        }
-      }
-    }
-
-    .slider {
-      background-color: #ccc;
-      bottom: 0;
-      cursor: pointer;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transition: 0.4s;
-
-      &:before {
-        background-color: #fff;
-        bottom: 4px;
-        content: "";
-        height: 26px;
-        left: 4px;
-        position: absolute;
-        transition: 0.4s;
-        width: 26px;
-      }
-
-      &.round {
-        border-radius: 34px;
-
-        &:before {
-          border-radius: 50%;
-        }
-      }
-    }
-
-    input:checked {
-      & + .slider {
-        background-color: #66bb6a;
-
-        &:before {
-          transform: translateX(26px);
-        }
-      }
-    }
-
-
+/* Add body styles */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
 }
