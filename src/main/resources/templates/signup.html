@@ -10,7 +10,7 @@
 
     <title>School Cafe Manager</title>
 </head>
-<body style="background-color: #f0f1f2;">
+<body data-bs-theme="auto">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand">School Cafe Manager</a>
@@ -24,6 +24,7 @@
                 <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
             </li>
         </ul>
+        <script type = "text/javascript" src = "darkmode.js"></script>
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/login}" type="submit">Login</a>
             <a class="btn btn-light me-md-2" th:href="@{/signup}" type="submit">Signup</a>
@@ -86,6 +87,10 @@
                 <br>
             </form>
         </div>
+        <div class="col-md-3 image-container">
+            <img src="juice.jpg" class="right" alt="Signup Image">
+
+
      </div>
 </div>
 

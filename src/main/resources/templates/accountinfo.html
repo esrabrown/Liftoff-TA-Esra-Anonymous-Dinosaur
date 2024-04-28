@@ -8,12 +8,12 @@
 
     <title>School Cafe Manager</title>
 </head>
-<body data-bs-theme="light">
+<body data-bs-theme="auto">
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <!--    <div class="container-fluid">-->
-    <a class="navbar-brand">School Cafe Manager</a>
+    <a class="navbar-brand">  School Cafe Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,22 +35,7 @@
                     onclick="myFunction()"
             />
         </div>
-        <script>
-            function myFunction() {
-              var element = document.body;
-              element.dataset.bsTheme =
-                element.dataset.bsTheme == "light" ? "dark" : "light";
-            }
-            function stepFunction(event) {
-              debugger;
-              var element = document.getElementsByClassName("collapse");
-              for (var i = 0; i < element.length; i++) {
-                if (element[i] !== event.target.ariaControls) {
-                  element[i].classList.remove("show");
-                }
-              }
-            }
-        </script>
+        <script type = "text/javascript" src = "darkmode.js"></script>
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/logout}" type="submit">Logout</a>
         </form>
@@ -73,6 +58,8 @@
                 <td th:text="${stuStat.index + 1}"></td>
                 <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
                 <td th:text="${stu.cafeteriaBalance}"></td>
+<!--                <td th:text="${#numbers.formatCurrency(stu.cafeteriaBalance, 'USD')}"></td>-->
+<!--                <td th:text="|${currency} ${#numbers.formatCurrency(stu.cafeteriaBalance, 1, 'POINT', 2, 'COMMA')}|"></td>-->
                 <td>
                     <a th:href=" @{/payment/addfunds(studentId=${stu.studentId})}"
                        class="btn btn-warning">Payment

@@ -4,7 +4,7 @@
     <title>Payment Status</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
+<body data-bs-theme="auto">
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <div  class="alert alert-danger mx-2 mt-2" role="alert" th:if='${error}' th:text="${error}">
@@ -19,6 +19,9 @@
         </div>
         <a th:href="@{/displayAccountInfo}" class="btn btn-info">Back to Account Info</a>
     </div>
+        <div class="col-md-3 image-container">
+            <img src="success.jpg" class="right" alt="Success Image">
+        </div>
 </div>
 </body>
 </html>
