@@ -1,96 +1,14 @@
 @charset "UTF-8";
 
-body{
-    background: #1e1e1e;
 
-    @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One");
-
-    :root {
-      --primary-color: #24242b;
-      --secondary-color: #433055;
-      --font-color: #3f3f3f;
-      --bg-color: #f3f3f3;
-      --heading-color: #2a2a23;
-    }
-
-    html[data-theme="dark"] {
-      --primary-color: #f89898;
-      --secondary-color: #8894b3;
-      --font-color: #d8d8f6;
-      --bg-color: #242424;
-      --heading-color: #818cab;
-    }
-
-    body {
-      font-family: "Lato", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--font-color);
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 30px;
-      font-size: calc(1rem + 0.25vh);
-    }
-
-    h1 {
-      color: var(--heading-color);
-      font-family: "Lato", serif;
-      font-size: 3rem;
-      margin-bottom: 1vh;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6rem;
-    }
-
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-      border-bottom: 3px solid transparent;
-      padding-bottom: 5px;
-      transition: border-bottom 1s;
-      font-weight: bold;
-
-      &:hover,
-      &:focus {
-        border-bottom: 3px solid currentColor;
-      }
-    }
-
-    section {
-      margin: 0 auto;
-    }
-
-    .post-meta {
-      font-size: 1rem;
-      font-style: italic;
-      display: block;
-      margin-bottom: 4vh;
-      color: var(--secondary-color);
-    }
-
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      padding: 20px 0;
-    }
-
-/* Declare two CSS custom properties */
-:root {
-  --color-bg: #ffffff;
-  --color-fg: #000000;
-}
-
-/* Use the prefers-color-scheme media query to hook into system settings */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #222222;
-    --color-fg: #ffffff;
-  }
-}
-
-/* Add body styles */
 body {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
+  padding: 25px;
+  background-color: white;
+  color: black;
+  font-size: 25px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
 }
