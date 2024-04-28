@@ -24,6 +24,16 @@
                 <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
             </li>
         </ul>
+        <div class="form-check form-switch mx-4">
+            <input
+                    class="form-check-input p-2"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    checked
+                    onclick="myFunction()"
+            />
+        </div>
         <script type = "text/javascript" src = "darkmode.js"></script>
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/login}" type="submit">Login</a>
