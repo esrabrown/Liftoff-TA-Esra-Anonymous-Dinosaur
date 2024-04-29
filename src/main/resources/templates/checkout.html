@@ -17,10 +17,9 @@
 
         <form action='/payment/charge' method='POST' id='checkout-form'>
             <input type='hidden' th:value='${amount}' name='amount' />
+            <img th:src="@{/checkout-sm.jpg}" />
             <label>Total Amount: $<span th:text='${amount/100}' /></label>
             <input type="hidden" th:value="${studentId}" name="studentId"/>
-
-            <img th:src="@{/checkout-sm.jpg}" />
             <p>Please enter your billing information:</p>
 
             <label for="shipping.phone">Phone number:</label><br>
@@ -39,7 +38,7 @@
             <input type="text" class="mb-3" maxlength="2" placeholder="MO" id="shipping.address.state" name="shippingState" required><br>
 
 
-            <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+            <!-- IMPORTANT NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf (NOT A SYNTAX ERROR!)-->
             <script
                     src='https://checkout.stripe.com/checkout.js'
                     class='stripe-button'

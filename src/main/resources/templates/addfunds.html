@@ -35,7 +35,7 @@
                     onclick="myFunction()"
             />
         </div>
-        <script type = "text/javascript" src = "darkmode.js"></script>
+        <script type = "text/javascript" src = "../darkmode.js"></script>
         <!--        end DARKMODE code-->
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/logout}" type="submit">Logout</a>
@@ -56,7 +56,7 @@
 
             <form th:action="@{/payment/add-funds}" method="post" style="text-align: center">
                 <input type="hidden" name="userId" id="userId" th:value="${student.studentId}">
-                <img th:src="@{/payment-sm.jpg}" />
+                <img th:src="@{/payment-sm.jpg}" style="text-align: center" />
                 <label for="amount">Total Amount: </label><br>
                 $<input type="number" name="amount" id="amount"/>
 
