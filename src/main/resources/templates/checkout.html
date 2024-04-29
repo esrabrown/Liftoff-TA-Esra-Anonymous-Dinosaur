@@ -9,9 +9,7 @@
     <title>School Cafe Manager</title>
 </head>
 <body data-bs-theme="auto">
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <!--    <div class="container-fluid">-->
     <a class="navbar-brand">School Cafe Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,57 +41,58 @@
     </div>
 </nav>
 <!-- Display a payment form -->
-<div class="container p-2" data-bs-theme="auto">
-    <table>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="card col-md-4">
-                <div class="card-header">
-    <h3>Add Funds to Account</h3>
-    <p>Please enter total amount to be added to account.</p>
+    <div class="container p-2" data-bs-theme="auto">
+        <table>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="card col-md-4">
+                    <div class="card-header">
+                        <h3>Add Funds to Account</h3>
+                        <form action='/payment/charge' method='POST' id='checkout-form'>
+                            <input type='hidden' th:value='${amount}' name='amount' />
+                            <label>Total Amount: $<span th:text='${amount/100}' /></label>
+                            <input type="hidden" th:value="${studentId}" name="studentId"/>
+                            <p>Please enter your billing information:</p>
 
-    <form action='/payment/charge' method='POST' id='checkout-form'>
-        <input type='hidden' th:value='${amount}' name='amount' />
-        <label>Total Amount: $<span th:text='${amount/100}' /></label>
-        <input type="hidden" th:value="${studentId}" name="studentId"/>
-        <p>Please enter your billing information:</p>
+                            <label for="shipping.phone">Phone number:</label><br>
+                            <input type="tel" maxlength="12" placeholder="555.867.5309" id="shipping.phone" name="shippingPhone" required><br>
 
-        <label for="shipping.phone">Phone number:</label><br>
-        <input type="tel" maxlength="12" placeholder="555.867.5309" id="shipping.phone" name="shippingPhone" required><br>
+                            <label for="shipping.address.line1">Billing Address (Line 1):</label><br>
+                            <input type="text" placeholder="123 Fake St" id="shipping.address.line1" name="shippingAddressLine1" required><br>
 
-        <label for="shipping.address.line1">Billing Address (Line 1):</label><br>
-        <input type="text" placeholder="123 Fake St" id="shipping.address.line1" name="shippingAddressLine1" required><br>
+                            <label for="shipping.address.line2">Billing Address (Line 2):</label><br>
+                            <input type="text" placeholder="Apartment B" id="shipping.address.line2" name="shippingAddressLine2"><br>
 
-        <label for="shipping.address.line2">Billing Address (Line 2):</label><br>
-        <input type="text" placeholder="Apartment B" id="shipping.address.line2" name="shippingAddressLine2"><br>
+                            <label for="shipping.address.postal_code">Postal Code:</label><br>
+                            <input type="text" maxlength="5" placeholder="63101" id="shipping.address.postal_code" name="shippingPostalCode" required><br>
 
-        <label for="shipping.address.postal_code">Postal Code:</label><br>
-        <input type="text" maxlength="5" placeholder="63101" id="shipping.address.postal_code" name="shippingPostalCode" required><br>
-
-        <label for="shipping.address.state" >State:</label><br>
-        <input type="text" class="mb-3" maxlength="2" placeholder="MO" id="shipping.address.state" name="shippingState" required><br>
+                            <label for="shipping.address.state" >State:</label><br>
+                            <input type="text" class="mb-3" maxlength="2" placeholder="MO" id="shipping.address.state" name="shippingState" required><br>
 
 
-        <!-- data-key/data-amount/data-currency will be rendered by Thymeleaf -->
-        <script
-                src='https://checkout.stripe.com/checkout.js'
-                class='stripe-button'
-                th:attr='data-key=${stripePublicKey},
-         data-amount=${amount},
-         data-currency=${currency}'
-                data-name='Cafe'
-                data-description='Add Funds to Account'
-                data-image
-                        ='https://www.imgur.com/j5Am3UK'
-                data-locale='auto'
-                data-zip-code='false'>
-            <!--                        ='https://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png'-->
-        </script>
-    </form>
-</div>
-<div class="col-md-3 image-container">
-    <img th:src="@{/checkout-sm.jpg}" class="right" />
-</div>
+                            <!-- data-key/data-amount/data-currency will be rendered by Thymeleaf, NOT A SYNTAX ERROR BELOW!!!! -->
+                            <script
+                                    src='https://checkout.stripe.com/checkout.js'
+                                    class='stripe-button'
+                                    th:attr='data-key=${stripePublicKey},
+                                    data-amount=${amount},
+                                    data-currency=${currency}'
+                                    data-name='Cafe'
+                                    data-description='Add Funds to Account'
+                                    data-image
+                                            ='https://i.imgur.com/j5Am3UK.png'
+                                    data-locale='auto'
+                                    data-zip-code='false'>
+                            </script>
+                        </form>
+                    </div>
+                    <div class="col-md-3 image-container">
+                        <img th:src="@{/checkout-sm.jpg}" class="right" />
+                    </div>
+                </div>
+            </div>
+        </table>
+    </div>
 
-</div></div></table></div></div></body>
+</body>
 </html>
