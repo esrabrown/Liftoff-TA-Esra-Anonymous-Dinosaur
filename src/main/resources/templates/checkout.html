@@ -42,12 +42,12 @@
 <!-- Displays payment form -->
 <div class="mx-3">
     <div class="form-check form-switch mx-4">
-        <h1>Add Funds to Account</h1>
-
-        <form action='/payment/charge' method='POST' id='checkout-form'>
+        <form action='/payment/charge' method='POST' id='checkout-form' style="text-align: center">
+            <h3>Adding funds to account</h3>
             <input type='hidden' th:value='${amount}' name='amount' />
-            <img th:src="@{/checkout-sm.jpg}" />
-            <label>Total Amount: $<span th:text='${amount/100}' /></label>
+            <img th:src="@{/checkout-sm.jpg}" style="text-align: center" />
+            <br>
+            <label>Total amount: $<span th:text='${amount/100}' /></label>
             <input type="hidden" th:value="${studentId}" name="studentId"/>
             <p>Please enter your billing information:</p>
 
