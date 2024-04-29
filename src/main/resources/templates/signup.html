@@ -41,68 +41,66 @@
         </form>
     </div>
 </nav>
-<div class="container p-2">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="card col-md-4">
-            <div class="card-header">
-                <h2 class="text-center">SignUp Form</h2>
-            </div>
-
-            <form action="signup" method="post" th:object="${user}">
-                <div class="form-group">
-                    <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" th:field="*{firstName}"/>
-
-                   <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
-                   style="color: red;">Error</label>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h2 class="text-center">SignUp Form</h2>
                 </div>
 
+                <form action="signup" method="post" th:object="${user}">
                     <div class="form-group">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" th:field="*{lastName}"/>
-                        <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
-                               style="color: red;">Error</label>
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" th:field="*{firstName}"/>
+
+                       <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
+                       style="color: red;">Error</label>
                     </div>
 
                         <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="text" class="form-control" th:field="*{userEmail}"/>
-                            <label th:if="${#fields.hasErrors('userEmail')}"  th:errors="*{userEmail}"
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" th:field="*{lastName}"/>
+                            <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
                                    style="color: red;">Error</label>
                         </div>
 
-                <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" th:field="*{userPassword}"/>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" th:field="*{userEmail}"/>
+                                <label th:if="${#fields.hasErrors('userEmail')}"  th:errors="*{userEmail}"
+                                       style="color: red;">Error</label>
+                            </div>
 
-                    <label th:if="${#fields.hasErrors('userPassword')}"  th:errors="*{userPassword}"
-                           style="color: red;">Error</label>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" th:field="*{userPassword}"/>
 
-                <div class="form-group">
-                    <label class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" th:field="*{confirmPassword}"/>
-                    <label th:if="${#fields.hasErrors('confirmPassword')}"  th:errors="*{confirmPassword}"
-                           style="color: red;">Error</label>
-                </div>
-                <!--Error Message showed on login form-->
-                <div class="form-group">
-                    <p style="..." th:text="${userError}"></p>
-                </div>
-                <br>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <br>
-            </form>
+                        <label th:if="${#fields.hasErrors('userPassword')}"  th:errors="*{userPassword}"
+                               style="color: red;">Error</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" th:field="*{confirmPassword}"/>
+                        <label th:if="${#fields.hasErrors('confirmPassword')}"  th:errors="*{confirmPassword}"
+                               style="color: red;">Error</label>
+                    </div>
+                    <!--Error Message showed on login form-->
+                    <div class="form-group">
+                        <p style="..." th:text="${userError}"></p>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="col-md-3 image-container">
+                <img src="juice.jpg" class="right" alt="Signup Image">
+            </div>
         </div>
-        <div class="col-md-3 image-container">
-            <img src="juice.jpg" class="right" alt="Signup Image">
-
-
-     </div>
-</div>
-
+    </div>
 </body>
 </html>

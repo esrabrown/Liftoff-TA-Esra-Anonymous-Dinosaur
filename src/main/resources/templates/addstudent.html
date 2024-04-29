@@ -40,51 +40,51 @@
 </nav>
 <br>
 <br>
- <div class="container p-2">
-     <div class="row">
-         <div class="col-md-0"></div>
-         <div class="card col-md-4">
-             <div class="card-header">
-                 <h2 class="text-center">Add Student</h2>
+     <div class="container p-2">
+         <div class="row">
+             <div class="col-md-0"></div>
+             <div class="card col-md-4">
+                 <div class="card-header">
+                     <h2 class="text-center">Add Student</h2>
+                 </div>
+                  <br>
+                     <form th:action="@{/addStudent}" th:object="${student}" method="post">
+                         <br>
+                     <div>
+                         <input type="text" th:field="*{firstName}" placeholder="First Name"/>
+                         <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
+                                style="color: red;">Error</label>
+
+                     </div>
+                         <br>
+                     <div>
+                         <input type="text" th:field="*{lastName}" placeholder="Last Name"/>
+                         <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
+                                style="color: red;">Error</label>
+                     </div>
+                         <br>
+                     <div>
+                         <input type="hidden" th:field="*{cafeteriaBalance}" th:value="cafeteriaBalance"/>
+                     </div>
+                         <br>
+                     <div>
+                         <input type="hidden" th:field="*{note}" th:value="note"/>
+                     </div>
+                         <br>
+                      <div>
+                          <input type="hidden" name="userId" th:value="${session.loginUser.userId}" />
+                     </div>
+                    <div>
+                         <button type="submit" class="btn btn-primary">Submit</button>
+                         <a th:href="@{/displayAccountInfo}" class="btn btn-primary">Back</a>
+                     </div>
+                         <br>
+                 </form>
              </div>
-              <br>
-                 <form th:action="@{/addStudent}" th:object="${student}" method="post">
-                     <br>
-                 <div>
-                     <input type="text" th:field="*{firstName}" placeholder="First Name"/>
-                     <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
-                            style="color: red;">Error</label>
-
-                 </div>
-                     <br>
-                 <div>
-                     <input type="text" th:field="*{lastName}" placeholder="Last Name"/>
-                     <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
-                            style="color: red;">Error</label>
-                 </div>
-                     <br>
-                 <div>
-                     <input type="hidden" th:field="*{cafeteriaBalance}" th:value="cafeteriaBalance"/>
-                 </div>
-                     <br>
-                 <div>
-                     <input type="hidden" th:field="*{note}" th:value="note"/>
-                 </div>
-                     <br>
-                  <div>
-                      <input type="hidden" name="userId" th:value="${session.loginUser.userId}" />
-                 </div>
-                <div>
-                     <button type="submit" class="btn btn-primary">Submit</button>
-                     <a th:href="@{/displayAccountInfo}" class="btn btn-primary">Back</a>
-                 </div>
-                     <br>
-             </form>
+             <div class="col-md-3 image-container">
+                 <img th:src="@{/checkout.jpg}" class="right" alt="AddStudent Image">
+            </div>
          </div>
-         <div class="col-md-3 image-container">
-             <img th:src="@{/checkout.jpg}" class="right" alt="AddStudent Image">
-
      </div>
- </div>
 </body>
 </html>
