@@ -10,7 +10,7 @@
 
     <title>School Cafe Manager</title>
 </head>
-<body style="background-color: #f0f1f2;">
+<body data-bs-theme="auto">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand">School Cafe Manager</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,15 +20,30 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#"></a>
                 </li>
             </ul>
-
+            <div class="form-check form-switch mx-4">
+                <input
+                        class="form-check-input p-2"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckChecked"
+                        checked
+                        onclick="myFunction()"
+                />
+            </div>
+            <script type = "text/javascript" src = "darkmode.js"></script>
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/login}" type="submit">Login</a>
             <a class="btn btn-light me-md-2" th:href="@{/signup}" type="submit">SignUp</a>
         </form>
     </div>
 </nav>
+<div class="col-md-3 image-container">
+<!--    <img src="sunglasses.jpg" id="center" class="img-fluid" alt="Login Image" width="500" height="100%">-->
+    <img th:src="@{/sunglasses.jpg}" />
+</div>
+
 </body>
 </html>

@@ -10,7 +10,7 @@
 
     <title>School Cafe Manager</title>
 </head>
-<body style="background-color: #f0f1f2;">
+<body data-bs-theme="auto">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand">School Cafe Manager</a>
@@ -24,70 +24,83 @@
                 <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
             </li>
         </ul>
+        <div class="form-check form-switch mx-4">
+            <input
+                    class="form-check-input p-2"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    checked
+                    onclick="myFunction()"
+            />
+        </div>
+        <script type = "text/javascript" src = "darkmode.js"></script>
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/login}" type="submit">Login</a>
             <a class="btn btn-light me-md-2" th:href="@{/signup}" type="submit">Signup</a>
         </form>
     </div>
 </nav>
-<div class="container p-2">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="card col-md-4">
-            <div class="card-header">
-                <h2 class="text-center">SignUp Form</h2>
-            </div>
-
-            <form action="signup" method="post" th:object="${user}">
-                <div class="form-group">
-                    <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" th:field="*{firstName}"/>
-
-                   <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
-                   style="color: red;">Error</label>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h2 class="text-center">SignUp Form</h2>
                 </div>
 
+                <form action="signup" method="post" th:object="${user}">
                     <div class="form-group">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" th:field="*{lastName}"/>
-                        <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
-                               style="color: red;">Error</label>
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" th:field="*{firstName}"/>
+
+                       <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
+                       style="color: red;">Error</label>
                     </div>
 
                         <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="text" class="form-control" th:field="*{userEmail}"/>
-                            <label th:if="${#fields.hasErrors('userEmail')}"  th:errors="*{userEmail}"
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" th:field="*{lastName}"/>
+                            <label th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
                                    style="color: red;">Error</label>
                         </div>
 
-                <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" th:field="*{userPassword}"/>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" th:field="*{userEmail}"/>
+                                <label th:if="${#fields.hasErrors('userEmail')}"  th:errors="*{userEmail}"
+                                       style="color: red;">Error</label>
+                            </div>
 
-                    <label th:if="${#fields.hasErrors('userPassword')}"  th:errors="*{userPassword}"
-                           style="color: red;">Error</label>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" th:field="*{userPassword}"/>
 
-                <div class="form-group">
-                    <label class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" th:field="*{confirmPassword}"/>
-                    <label th:if="${#fields.hasErrors('confirmPassword')}"  th:errors="*{confirmPassword}"
-                           style="color: red;">Error</label>
-                </div>
-                <!--Error Message showed on login form-->
-                <div class="form-group">
-                    <p style="..." th:text="${userError}"></p>
-                </div>
-                <br>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <br>
-            </form>
+                        <label th:if="${#fields.hasErrors('userPassword')}"  th:errors="*{userPassword}"
+                               style="color: red;">Error</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" th:field="*{confirmPassword}"/>
+                        <label th:if="${#fields.hasErrors('confirmPassword')}"  th:errors="*{confirmPassword}"
+                               style="color: red;">Error</label>
+                    </div>
+                    <!--Error Message showed on login form-->
+                    <div class="form-group">
+                        <p style="..." th:text="${userError}"></p>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="col-md-3 image-container">
+                <img th:src="@{/juice.jpg}" />
+            </div>
         </div>
-     </div>
-</div>
-
+    </div>
 </body>
 </html>

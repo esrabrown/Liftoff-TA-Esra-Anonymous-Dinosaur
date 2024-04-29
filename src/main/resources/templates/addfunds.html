@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +8,9 @@
 
     <title>School Cafe Manager</title>
 </head>
-<body>
+<body data-bs-theme="auto">
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <!--    <div class="container-fluid">-->
     <a class="navbar-brand">School Cafe Manager</a>
@@ -22,32 +24,47 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
         </ul>
-
+        <!--        begin darkmode button-->
+        <div class="form-check form-switch mx-4">
+            <input
+                    class="form-check-input p-2"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    checked
+                    onclick="myFunction()"
+            />
+        </div>
+        <script type = "text/javascript" src = "../darkmode.js"></script>
+        <!--        end DARKMODE code-->
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
-
             <a class="btn btn-light me-md-2" th:href="@{/logout}" type="submit">Logout</a>
         </form>
     </div>
 </nav>
 
 <!--this adds the "Add Funds" button to the page-->
-<div class="px-2 py-3">
+<div class="container p-2" data-bs-theme="auto">
     <table>
-        <tr>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="card col-md-4">
+                <div class="card-header">
+            <h3 class="text-center">Add Funds to <span th:text="${student.firstName}"></span>'s account</h3>
+
             <br>
 
-            <h3>Add Funds to <span th:text="${student.firstName}"></span>'s Account</h3>
-
-            <br>
-
-            <form th:action="@{/payment/add-funds}" method="post">
+            <form th:action="@{/payment/add-funds}" method="post" style="text-align: center">
                 <input type="hidden" name="userId" id="userId" th:value="${student.studentId}">
-                <label for="amount">Total Amount: $</label><br>
-                <input type="number" name="amount" id="amount"/>
+                <img th:src="@{/payment-sm.jpg}" style="text-align: center" />
+                <label for="amount">Total Amount: </label><br>
+                $<input type="number" name="amount" id="amount"/>
 
-                <input type="submit" value="Add Funds"/>
+               <input type="submit" value="Add Funds"/>
             </form>
-        </tr>
+        </div>
+            </div>
+        </div>
     </table>
 </div>
 

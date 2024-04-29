@@ -9,7 +9,7 @@
     <title>School Cafe Manager</title>
 </head>
 
-<body style="background-color: #f0f1f2;">
+<body data-bs-theme="auto">
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -25,6 +25,17 @@
                 <a class="nav-link active" aria-current="page" th:href="@{/displayAccountInfo}">Home</a>
             </li>
         </ul>
+        <div class="form-check form-switch mx-4">
+            <input
+                    class="form-check-input p-2"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    checked
+                    onclick="myFunction()"
+            />
+        </div>
+        <script type = "text/javascript" src = "darkmode.js"></script>
 
         <form class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-light me-md-2" th:href="@{/logout}" type="submit">Logout</a>
@@ -72,7 +83,10 @@
             <br>
          </form>
     </div>
-  </div>
-</div>
+     <div class="col-md-3 image-container">
+         <img src="checkout.jpg" class="right" alt="AddNote Image">
+     </div>
+   </div>
+ </div>
 </body>
 </html>
