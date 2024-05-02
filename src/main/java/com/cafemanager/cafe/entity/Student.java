@@ -67,7 +67,7 @@ public class Student {
 
     // checks cafeteria balance and if it is 'null' changes it to 0.
     public Double getCafeteriaBalance() {
-        if (cafeteriaBalance == null) { return new Double(0.0); }
+        if (cafeteriaBalance == null) { return new Double(0.0); } // should not have used Double but it works for now
 
         return cafeteriaBalance;
     }
