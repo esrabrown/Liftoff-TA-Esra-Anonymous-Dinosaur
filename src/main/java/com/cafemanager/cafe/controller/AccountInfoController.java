@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Objects;
 
+
+
 @Controller
 public class AccountInfoController {
     @Autowired
@@ -38,7 +40,7 @@ public class AccountInfoController {
         session.setAttribute("loginUser", user);
         return "accountinfo";
     }
-
+    // This creates a new StudentBean and switches to "addStudent" view
     @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
     public ModelAndView setupAddStudent() {
 
@@ -46,7 +48,7 @@ public class AccountInfoController {
         return new ModelAndView("addstudent", "student", studentBean);
     }
 
-    //Adding Student in controller
+    // Creates new Student with properties from StudentBean
     @PostMapping("/addStudent")
     public String processAddStudent(@ModelAttribute("student") @Validated StudentBean studentBean, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {

@@ -1,6 +1,9 @@
 package com.cafemanager.cafe.model;
 public class ChargeRequest {
 
+
+//    This defines the ChargeRequest required to process a payment.
+
     public enum Currency {
         USD;
     }
@@ -16,6 +19,8 @@ public class ChargeRequest {
     private String shippingState;
     private Integer studentId;
 
+
+    // Getters and Setters
     public Integer getStudentId() {
         return studentId;
     }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+// This service allows for interaction with the Stripe API.
+
 @Service
 public class StripeService {
     // secret key is stored in application.properties. Currently using TEST KEYS.
